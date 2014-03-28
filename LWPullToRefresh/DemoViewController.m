@@ -1,16 +1,16 @@
 //
 //  DemoViewController.m
-//  LWTableView
+//  LWRefreshControl
 //
 //  Created by LiYonghui on 14-3-25.
 //  Copyright (c) 2014年 LiYonghui. All rights reserved.
 //
 
 #import "DemoViewController.h"
-#import "LWTableView.h"
+#import "UIScrollView+LWPullToRefresh.h"
 
 @interface DemoViewController () <UITableViewDataSource, UITableViewDelegate> {
-    LWTableView *_tableView;
+    UITableView *_tableView;
 }
 
 @end
@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _tableView = [[LWTableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
@@ -31,29 +31,33 @@
     headerView.backgroundColor = [UIColor yellowColor];
     headerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     _tableView.tableHeaderView = headerView;
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.frame = headerView.bounds;
+    button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [headerView addSubview:button];
+    [button setTitle:@"Hit me" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     
     __weak typeof(_tableView) weakTableView = _tableView;
-    [_tableView addPullToRefreshWithActionHandler:^{
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [weakTableView stopAnimating];
-        });
-        
+    [_tableView setPullToRefreshWithActionHandler:^{
+        [weakTableView performSelector:@selector(endRefreshLoading) withObject:nil afterDelay:5];
+    }];
+    
+    [_tableView setInfiniteScrollingWithActionHandler:^{
+        [weakTableView performSelector:@selector(endInfiniteLoading) withObject:nil afterDelay:5];
     }];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
-    NSLog(@"refresh control: %@", _tableView.refreshControl);
+
+- (void)buttonAction:(id)sender {
+    BOOL hidden = self.navigationController.navigationBarHidden;
+    [self.navigationController setNavigationBarHidden:!hidden animated:YES];
 }
-
-
 
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 100;
+    return 20;
 }
 
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D839501718E57F7F0056E81C /* UIScrollView+LWPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = D839501618E57F7F0056E81C /* UIScrollView+LWPullToRefresh.m */; };
 		D8C9282918E17492008E1765 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8C9282818E17492008E1765 /* Foundation.framework */; };
 		D8C9282B18E17492008E1765 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8C9282A18E17492008E1765 /* CoreGraphics.framework */; };
 		D8C9282D18E17492008E1765 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8C9282C18E17492008E1765 /* UIKit.framework */; };
@@ -21,7 +22,6 @@
 		D8C9284E18E17492008E1765 /* LWPullToRefreshTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C9284D18E17492008E1765 /* LWPullToRefreshTests.m */; };
 		D8C9285E18E17502008E1765 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C9285818E17502008E1765 /* DemoViewController.m */; };
 		D8C9286618E1751F008E1765 /* LWRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C9286318E1751F008E1765 /* LWRefreshControl.m */; };
-		D8C9286718E1751F008E1765 /* LWTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C9286518E1751F008E1765 /* LWTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D839501518E57F7F0056E81C /* UIScrollView+LWPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LWPullToRefresh.h"; sourceTree = "<group>"; };
+		D839501618E57F7F0056E81C /* UIScrollView+LWPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LWPullToRefresh.m"; sourceTree = "<group>"; };
 		D8C9282518E17492008E1765 /* LWPullToRefresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LWPullToRefresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8C9282818E17492008E1765 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D8C9282A18E17492008E1765 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -55,8 +57,6 @@
 		D8C9285818E17502008E1765 /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
 		D8C9286218E1751F008E1765 /* LWRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWRefreshControl.h; sourceTree = "<group>"; };
 		D8C9286318E1751F008E1765 /* LWRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWRefreshControl.m; sourceTree = "<group>"; };
-		D8C9286418E1751F008E1765 /* LWTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWTableView.h; sourceTree = "<group>"; };
-		D8C9286518E1751F008E1765 /* LWTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,8 +161,8 @@
 			children = (
 				D8C9286218E1751F008E1765 /* LWRefreshControl.h */,
 				D8C9286318E1751F008E1765 /* LWRefreshControl.m */,
-				D8C9286418E1751F008E1765 /* LWTableView.h */,
-				D8C9286518E1751F008E1765 /* LWTableView.m */,
+				D839501518E57F7F0056E81C /* UIScrollView+LWPullToRefresh.h */,
+				D839501618E57F7F0056E81C /* UIScrollView+LWPullToRefresh.m */,
 			);
 			path = LWRefreshControl;
 			sourceTree = "<group>";
@@ -263,10 +263,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8C9286618E1751F008E1765 /* LWRefreshControl.m in Sources */,
+				D839501718E57F7F0056E81C /* UIScrollView+LWPullToRefresh.m in Sources */,
 				D8C9285E18E17502008E1765 /* DemoViewController.m in Sources */,
 				D8C9283918E17492008E1765 /* AppDelegate.m in Sources */,
 				D8C9283518E17492008E1765 /* main.m in Sources */,
-				D8C9286718E1751F008E1765 /* LWTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +465,7 @@
 				D8C9285318E17492008E1765 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D8C9285418E17492008E1765 /* Build configuration list for PBXNativeTarget "LWPullToRefreshTests" */ = {
 			isa = XCConfigurationList;
@@ -473,6 +474,7 @@
 				D8C9285618E17492008E1765 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

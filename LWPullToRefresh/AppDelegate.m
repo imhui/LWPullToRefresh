@@ -18,7 +18,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     DemoViewController *vc = [[DemoViewController alloc] init];
-    //    self.window.rootViewController = vc;
+//    self.window.rootViewController = vc;
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = nc;
     
