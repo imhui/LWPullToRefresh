@@ -30,6 +30,19 @@
  */
 - (void)setInfiniteScrollingWithActionHandler:(void (^)(void))actionHandler;
 
+
+/**
+ *  触发下拉刷新操作
+ */
+- (void)triggerPullToRefresh;
+
+
+/**
+ *  触发上拉加载操作
+ */
+- (void)triggerInfiniteScrolling;
+
+
 /**
  *  结束下拉刷新操作
  */
@@ -39,6 +52,9 @@
  *  结束上拉加载操作
  */
 - (void)endInfiniteLoading;
+
+
+
 
 
 @end

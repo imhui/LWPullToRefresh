@@ -54,6 +54,19 @@ static char UIScrollViewPullInfiniteControl;
 }
 
 
+- (void)triggerPullToRefresh {
+    if (self.refreshControl) {
+        [self.refreshControl triggerPullToLoading];
+    }
+}
+
+- (void)triggerInfiniteScrolling {
+    if (self.infiniteControl) {
+        [self.infiniteControl triggerPullToLoading];
+    }
+}
+
+
 - (void)endRefreshLoading {
     [self.refreshControl endLoading];
 }
