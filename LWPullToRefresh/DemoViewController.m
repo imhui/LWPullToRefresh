@@ -11,6 +11,7 @@
 
 @interface DemoViewController () <UITableViewDataSource, UITableViewDelegate> {
     UITableView *_tableView;
+    NSMutableArray *_dataList;
 }
 
 @end
@@ -38,14 +39,22 @@
     [button setTitle:@"Hit me" forState:UIControlStateNormal];
     [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    __weak typeof(_tableView) weakTableView = _tableView;
+    _dataList = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    __weak typeof(self) weakSelf = self;
     [_tableView setPullToRefreshWithActionHandler:^{
-        [weakTableView performSelector:@selector(endRefreshLoading) withObject:nil afterDelay:5];
+        [weakSelf performSelector:@selector(refreshDataList) withObject:nil afterDelay:5];
     }];
     
     [_tableView setInfiniteScrollingWithActionHandler:^{
-        [weakTableView performSelector:@selector(endInfiniteLoading) withObject:nil afterDelay:5];
+        [weakSelf performSelector:@selector(loadMoreData) withObject:nil afterDelay:5];
     }];
+    
+    
+    for (NSInteger i = 0; i < 20; i++) {
+        [_dataList addObject:[NSDate date]];
+    }
+    
 }
 
 
@@ -55,16 +64,29 @@
 }
 
 
+- (void)refreshDataList {
+    [_dataList insertObject:[NSDate date] atIndex:0];
+    [_tableView reloadData];
+    [_tableView endRefreshLoading];
+}
+
+- (void)loadMoreData {
+    [_dataList addObject:[NSDate date]];
+    [_tableView reloadData];
+    [_tableView endInfiniteLoading];
+}
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return [_dataList count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
+    cell.textLabel.text = [_dataList[indexPath.row] description];
     return cell;
 }
 

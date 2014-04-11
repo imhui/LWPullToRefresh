@@ -334,6 +334,9 @@ static const CGFloat kTriggerLoadingDefaultHeight = 80.0;
         return;
     }
     
+    if ([keyPath isEqualToString:@"contentInset"]) {
+        [self scrollViewDidScroll];
+    }
     if ([keyPath isEqualToString:@"contentOffset"]) {
         [self scrollViewDidScroll];
     }
@@ -412,6 +415,12 @@ static const CGFloat kTriggerLoadingDefaultHeight = 80.0;
     progress = progress >= 0.96 ? 0.96 : progress;
     if (_position == LWPullToRefreshPositionTop) {
         _indicatorView.progress = offset <= 0 ? progress : 0;
+        
+        CGFloat alpha = offset / kTriggerLoadingDefaultHeight;
+        alpha = alpha <= 0 ? ABS(alpha) : 0;
+        alpha = alpha >= 1 ? 1 : alpha;
+        self.alpha = alpha;
+        
     }
     else {
         _indicatorView.progress = progress;
