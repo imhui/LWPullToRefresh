@@ -392,7 +392,7 @@ static const CGFloat kTriggerLoadingDefaultHeight = 80.0;
     }
     else {
         if (_refreshState != LWPullToRefreshStateLoading) {
-            CGFloat realOffset = _scrollView.contentOffset.y + CGRectGetHeight(_scrollView.bounds) - _scrollView.contentSize.height;
+            CGFloat realOffset = _scrollView.contentOffset.y + CGRectGetHeight(_scrollView.bounds) - _scrollView.contentSize.height - _scrollView.contentInset.bottom;
             [self updateIndicatorProgressWithOffset:realOffset];
             _refreshState = (realOffset > kTriggerLoadingDefaultHeight) ? LWPullToRefreshStateTriggered : LWPullToRefreshStateNormal;
                 
@@ -495,7 +495,7 @@ static const CGFloat kTriggerLoadingDefaultHeight = 80.0;
         insets.top -= kTriggerLoadingDefaultHeight;
     }
     else {
-        insets.bottom = 0;
+        insets.bottom -= kTriggerLoadingDefaultHeight;
     }
     
     _refreshState = LWPullToRefreshStateNormal;
