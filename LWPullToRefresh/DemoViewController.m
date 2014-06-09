@@ -21,6 +21,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Refresh"
+                                                                              style:UIBarButtonItemStyleBordered
+                                                                             target:self
+                                                                             action:@selector(triggerToRefresh)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"LoadMore"
+                                                                              style:UIBarButtonItemStyleBordered
+                                                                             target:self
+                                                                             action:@selector(triggerInfiniteScrolling)];
+    
+    
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _tableView.dataSource = self;
@@ -63,6 +73,15 @@
     [self.navigationController setNavigationBarHidden:!hidden animated:YES];
 }
 
+
+- (void)triggerToRefresh {
+    [_tableView triggerPullToRefresh];
+    
+}
+
+- (void)triggerInfiniteScrolling {
+    [_tableView triggerInfiniteScrolling];
+}
 
 - (void)refreshDataList {
     [_dataList insertObject:[NSDate date] atIndex:0];

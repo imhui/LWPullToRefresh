@@ -405,7 +405,7 @@ static const CGFloat kTriggerLoadingDefaultHeight = 80.0;
 - (void)scrollViewPanGestureRecognizerStateChanged {
     
     if (_scrollView.panGestureRecognizer.state == UIGestureRecognizerStateEnded) {
-        [self triggerPullToLoading];
+        [self pullToLoading];
     }
 }
 
@@ -431,6 +431,29 @@ static const CGFloat kTriggerLoadingDefaultHeight = 80.0;
 
 #pragma mark
 - (void)triggerPullToLoading {
+    
+    if (_refreshState == LWPullToRefreshStateLoading) {
+        return;
+    }
+    
+    CGPoint offset = _scrollView.contentOffset;
+    if (_position == LWPullToRefreshPositionTop) {
+        offset.y = -_scrollView.contentInset.top - kTriggerLoadingDefaultHeight;
+    }
+    else {
+        offset.y = _scrollView.contentSize.height - CGRectGetHeight(_scrollView.bounds) + kTriggerLoadingDefaultHeight;
+    }
+    
+    [UIView animateWithDuration:UINavigationControllerHideShowBarDuration
+                     animations:^{
+                         _scrollView.contentOffset = offset;
+                     } completion:^(BOOL finished) {
+                         [self pullToLoading];
+                     }];
+}
+
+
+- (void)pullToLoading {
     
     if (!self.enabled) {
         return;
@@ -462,7 +485,7 @@ static const CGFloat kTriggerLoadingDefaultHeight = 80.0;
         else {
             
             CGFloat realOffset = _scrollView.contentOffset.y + CGRectGetHeight(_scrollView.bounds) - _scrollView.contentSize.height;
-            if (realOffset > kTriggerLoadingDefaultHeight) {
+            if (realOffset >= kTriggerLoadingDefaultHeight) {
                 
                 UIEdgeInsets insets = _scrollView.contentInset;
                 insets.bottom += kTriggerLoadingDefaultHeight;
