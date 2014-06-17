@@ -16,7 +16,7 @@
 
 
 /**
- *  添加一个下拉刷新的操作block
+ *  设置一个下拉刷新的操作block
  *
  *  @param actionHandler 调用的block
  */
@@ -24,11 +24,22 @@
 
 
 /**
- *  添加一个上拉加载更多的操作block
+ *  设置一个上拉加载更多的操作block
  *
  *  @param actionHandler 调用的block
  */
 - (void)setInfiniteScrollingWithActionHandler:(void (^)(void))actionHandler;
+
+
+/**
+ *  取消下拉刷新的操作
+ */
+- (void)removePullToRefreshActionHandler;
+
+/**
+ *  取消上拉加载更多的操作
+ */
+- (void)removeInfiniteScrollingActionHandler;
 
 
 /**

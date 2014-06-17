@@ -41,6 +41,7 @@ static char UIScrollViewPullInfiniteControl;
 - (void)removePullToRefreshActionHandler {
     if (self.refreshControl != nil) {
         self.refreshControl.actionHandler = nil;
+        [self.refreshControl removeFromSuperview];
     }
     self.refreshControl = nil;
 }
@@ -49,6 +50,7 @@ static char UIScrollViewPullInfiniteControl;
     
     if (self.infiniteControl != nil) {
         self.infiniteControl.actionHandler = nil;
+        [self.infiniteControl removeFromSuperview];
     }
     self.infiniteControl = nil;
 }
