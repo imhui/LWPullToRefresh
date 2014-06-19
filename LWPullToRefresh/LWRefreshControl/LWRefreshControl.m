@@ -256,8 +256,28 @@ static const CGFloat kTriggerLoadingDefaultHeight = 80.0;
     _detailTextLabel.text = self.subtitles[LWPullToRefreshStateNormal];
     [self addSubview:_detailTextLabel];
     
-    
 }
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    CGRect rect = self.bounds;
+    rect.size = CGSizeMake(20.0, 20.0);
+    rect.origin.x = 20;
+    rect.origin.y = (CGRectGetHeight(self.bounds) - CGRectGetHeight(rect)) / 2.0;
+    _indicatorView.frame = rect;
+    
+    rect.origin.x = CGRectGetMaxX(_indicatorView.frame) + 10;
+    rect.origin.y = CGRectGetMinY(_indicatorView.frame);
+    rect.size.width = CGRectGetWidth(self.bounds) - CGRectGetMaxX(rect) - 10;
+    rect.size.height = CGRectGetHeight(_indicatorView.frame);
+    _textLabel.frame = rect;
+    
+    rect.origin.y = CGRectGetMaxY(rect) + 5;
+    rect.size.height = 14;
+    _detailTextLabel.frame = rect;
+}
+
 
 
 #pragma mark
