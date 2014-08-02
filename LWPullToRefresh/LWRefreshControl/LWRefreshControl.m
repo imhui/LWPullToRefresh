@@ -155,13 +155,12 @@ static const CGFloat kTriggerLoadingDefaultHeight = 80.0;
     
     
     LWPullToRefreshState _refreshState;
-    LWPullToRefreshPosition _position;
     
 }
 
 @property (nonatomic, strong) NSMutableArray *titles;
 @property (nonatomic, strong) NSMutableArray *subtitles;
-
+@property (nonatomic, assign) LWPullToRefreshPosition position;
 
 @end
 
@@ -186,7 +185,7 @@ static const CGFloat kTriggerLoadingDefaultHeight = 80.0;
         [_scrollView addSubview:self];
         [_scrollView sendSubviewToBack:self];
         
-        _position = position;
+        self.position = position;
         
     }
     return self;
@@ -209,6 +208,16 @@ static const CGFloat kTriggerLoadingDefaultHeight = 80.0;
         [self initTitleLables];
     }
     return self;
+}
+
+- (void)setPosition:(LWPullToRefreshPosition)position {
+    _position = position;
+    if (position == LWPullToRefreshPositionTop) {
+        self.titles = [@[NSLocalizedString(@"Pull down to refresh...",), NSLocalizedString(@"Release to refresh...",), NSLocalizedString(@"Loading...",)] mutableCopy];
+    }
+    else {
+        self.titles = [@[NSLocalizedString(@"Pull up to refresh...",), NSLocalizedString(@"Release to refresh...",), NSLocalizedString(@"Loading...",)] mutableCopy];
+    }
 }
 
 
