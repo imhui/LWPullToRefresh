@@ -84,7 +84,7 @@ static char UIScrollViewPullInfiniteControl;
     }
 }
 
-- (void)setInfiniteLoading:(BOOL)enable {
+- (void)setInfiniteLoadingEnable:(BOOL)enable {
     if (self.infiniteControl) {
         self.infiniteControl.enabled = enable;
     }
