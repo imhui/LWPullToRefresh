@@ -52,12 +52,19 @@
     _dataList = [[NSMutableArray alloc] initWithCapacity:0];
     
     __weak typeof(self) weakSelf = self;
+    __weak typeof(_tableView)weakTableView = _tableView;
     [_tableView setPullToRefreshWithActionHandler:^{
         [weakSelf performSelector:@selector(refreshDataList) withObject:nil afterDelay:5];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakTableView setInfiniteLoading:YES];
+        });
     }];
     
     [_tableView setInfiniteScrollingWithActionHandler:^{
         [weakSelf performSelector:@selector(loadMoreData) withObject:nil afterDelay:5];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakTableView setInfiniteLoading:NO];
+        });
     }];
     
     

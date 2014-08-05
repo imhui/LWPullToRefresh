@@ -78,6 +78,18 @@ static char UIScrollViewPullInfiniteControl;
 }
 
 
+- (void)setPullToRefreshEnable:(BOOL)enable {
+    if (self.refreshControl) {
+        self.refreshControl.enabled = enable;
+    }
+}
+
+- (void)setInfiniteLoading:(BOOL)enable {
+    if (self.infiniteControl) {
+        self.infiniteControl.enabled = enable;
+    }
+}
+
 
 #pragma mark - Property
 - (void)setRefreshControl:(LWRefreshControl *)refreshControl {

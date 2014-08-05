@@ -305,6 +305,11 @@ static const CGFloat kTriggerLoadingDefaultHeight = 80.0;
     self.subtitles[state] = subtitle;
 }
 
+- (void)setEnabled:(BOOL)enabled {
+    [super setEnabled:enabled];
+    self.hidden = !enabled;
+}
+
 
 #pragma mark - Property
 - (LWPullToRefreshState)refreshControlState {

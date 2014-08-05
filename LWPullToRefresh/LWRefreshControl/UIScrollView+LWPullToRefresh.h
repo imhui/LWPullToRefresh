@@ -64,8 +64,15 @@
  */
 - (void)endInfiniteLoading;
 
+/**
+ *  设置下拉刷新控件是否起作用
+ */
+- (void)setPullToRefreshEnable:(BOOL)enable;
 
-
+/**
+ *  设置上拉加载更多控件是否起作用
+ */
+- (void)setInfiniteLoading:(BOOL)enable;
 
 
 @end
