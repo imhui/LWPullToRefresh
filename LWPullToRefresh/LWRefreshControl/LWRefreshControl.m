@@ -388,8 +388,9 @@ static const CGFloat kTriggerLoadingDefaultHeight = 80.0;
 - (void)scrollViewContentSizeChanged {
     
     if (_position == LWPullToRefreshPositionBottom) {
-        self.enabled = (_scrollView.contentSize.height + _scrollView.contentInset.top) >= CGRectGetHeight(_scrollView.bounds);
-        self.hidden = !self.enabled;
+        if (self.enabled) {
+            self.enabled = (_scrollView.contentSize.height + _scrollView.contentInset.top) >= CGRectGetHeight(_scrollView.bounds);
+        }
     }
     
 }

@@ -56,7 +56,7 @@
     [_tableView setPullToRefreshWithActionHandler:^{
         [weakSelf performSelector:@selector(refreshDataList) withObject:nil afterDelay:5];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [weakTableView setInfiniteLoadingEnable:YES];
+            [weakTableView setInfiniteLoadingEnable:NO];
         });
     }];
     
