@@ -58,11 +58,16 @@
  *  结束下拉刷新操作
  */
 - (void)endRefreshLoading;
+- (void)endRefreshLoadingAfterDelay:(NSTimeInterval)delay;
 
 /**
  *  结束上拉加载操作
  */
 - (void)endInfiniteLoading;
+- (void)endInfiniteLoadingAfterDelay:(NSTimeInterval)delay;
+
+- (void)endRefreshLoadingAfterDelay:(NSTimeInterval)delay infiniteLoadingEnable:(BOOL)enable;
+- (void)endInfiniteLoadingAfterDelay:(NSTimeInterval)delay infiniteLoadingEnable:(BOOL)enable;
 
 /**
  *  设置下拉刷新控件是否起作用

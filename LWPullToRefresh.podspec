@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "LWPullToRefresh"
-  s.version      = "1.0.3"
+  s.version      = "1.0.4"
   s.summary      = "LWPullToRefresh"
   s.homepage     = "https://github.com/imhui/LWPullToRefresh"
   s.license      = 'MIT'

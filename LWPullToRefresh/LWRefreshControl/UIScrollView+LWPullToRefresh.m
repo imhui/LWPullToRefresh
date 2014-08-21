@@ -73,10 +73,32 @@ static char UIScrollViewPullInfiniteControl;
     [self.refreshControl endLoading];
 }
 
+- (void)endRefreshLoadingAfterDelay:(NSTimeInterval)delay {
+    [self performSelector:@selector(endRefreshLoading) withObject:nil afterDelay:delay];
+}
+
 - (void)endInfiniteLoading {
     [self.infiniteControl endLoading];
 }
 
+- (void)endInfiniteLoadingAfterDelay:(NSTimeInterval)delay {
+    [self performSelector:@selector(endInfiniteLoading) withObject:nil afterDelay:delay];
+}
+
+
+- (void)endRefreshLoadingAfterDelay:(NSTimeInterval)delay infiniteLoadingEnable:(BOOL)enable {
+    [self endRefreshLoadingAfterDelay:delay];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((delay + 0.1) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self setInfiniteLoadingEnable:enable];
+    });
+}
+
+- (void)endInfiniteLoadingAfterDelay:(NSTimeInterval)delay infiniteLoadingEnable:(BOOL)enable {
+    [self endInfiniteLoadingAfterDelay:delay];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)((delay + 0.1) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self setInfiniteLoadingEnable:enable];
+    });
+}
 
 - (void)setPullToRefreshEnable:(BOOL)enable {
     if (self.refreshControl) {
