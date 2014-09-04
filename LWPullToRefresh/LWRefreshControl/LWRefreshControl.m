@@ -391,6 +391,9 @@ static const CGFloat kTriggerLoadingDefaultHeight = 80.0;
         if (self.enabled) {
             self.enabled = (_scrollView.contentSize.height + _scrollView.contentInset.top) >= CGRectGetHeight(_scrollView.bounds);
         }
+        CGRect rect = self.frame;
+        rect.origin.y = _scrollView.contentSize.height;
+        self.frame = rect;
     }
     
 }
