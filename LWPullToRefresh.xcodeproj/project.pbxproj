@@ -35,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F8E896719EF64F90054697F /* LWRefreshControlConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LWRefreshControlConstants.h; sourceTree = "<group>"; };
 		D839501518E57F7F0056E81C /* UIScrollView+LWPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LWPullToRefresh.h"; sourceTree = "<group>"; };
 		D839501618E57F7F0056E81C /* UIScrollView+LWPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LWPullToRefresh.m"; sourceTree = "<group>"; };
 		D8C9282518E17492008E1765 /* LWPullToRefresh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LWPullToRefresh.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +160,7 @@
 		D8C9286118E1751F008E1765 /* LWRefreshControl */ = {
 			isa = PBXGroup;
 			children = (
+				1F8E896719EF64F90054697F /* LWRefreshControlConstants.h */,
 				D8C9286218E1751F008E1765 /* LWRefreshControl.h */,
 				D8C9286318E1751F008E1765 /* LWRefreshControl.m */,
 				D839501518E57F7F0056E81C /* UIScrollView+LWPullToRefresh.h */,

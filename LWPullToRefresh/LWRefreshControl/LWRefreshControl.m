@@ -32,12 +32,12 @@
 /**
  *  进度值，0.0 ~ 1.0
  */
-@property (nonatomic) CGFloat progress;
+@property (nonatomic, assign) CGFloat progress;
 
 /**
  *  进度条线宽
  */
-@property (nonatomic) CGFloat progressLineWidth;
+@property (nonatomic, assign) CGFloat progressLineWidth;
 
 /**
  *  开始旋转
@@ -89,7 +89,7 @@
 }
 
 
-- (void)setProgressLineWidth:(float)progressWidth
+- (void)setProgressLineWidth:(CGFloat)progressWidth
 {
     _progressLineWidth = progressWidth;
     _trackLayer.lineWidth = _progressLineWidth;
@@ -109,7 +109,7 @@
     _progressLayer.strokeColor = progressColor.CGColor;
 }
 
-- (void)setProgress:(float)progress
+- (void)setProgress:(CGFloat)progress
 {
     _progress = progress;
     
